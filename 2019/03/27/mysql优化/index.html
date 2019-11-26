@@ -88,22 +88,23 @@
 
 
 
-<meta name="description" content="前言为什么要优化？1、系统的吞吐量瓶颈往往出现在数据库的访问速度上2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢3、数据是存放在磁盘上的，读写速度无法和内存相比 如何优化1、设计数据库时：数据库表、字段的设计，存储引擎2、利用好MySQL自身提供的功能，如索引等3、横向扩展：MySQL集群、负载均衡、读写分离4、SQL语句的优化（文章主要讲解） 一、存储引擎的选择1、早期问">
+<meta name="description" content="前言为什么要优化？1、系统的吞吐量瓶颈往往出现在数据库的访问速度上2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢3、数据是存放在磁盘上的，读写速度无法和内存相比 如何优化1、设计数据库时：数据库表、字段的设计，存储引擎2、利用好MySQL自身提供的功能，如索引等3、横向扩展：MySQL集群、负载均衡、读写分离4、SQL语句的优化（文章主要讲解） 一、存储引擎的选择1、早期">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql优化">
 <meta property="og:url" content="http://yoursite.com/2019/03/27/mysql优化/index.html">
 <meta property="og:site_name" content="郑汉钦同学的博客园">
-<meta property="og:description" content="前言为什么要优化？1、系统的吞吐量瓶颈往往出现在数据库的访问速度上2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢3、数据是存放在磁盘上的，读写速度无法和内存相比 如何优化1、设计数据库时：数据库表、字段的设计，存储引擎2、利用好MySQL自身提供的功能，如索引等3、横向扩展：MySQL集群、负载均衡、读写分离4、SQL语句的优化（文章主要讲解） 一、存储引擎的选择1、早期问">
+<meta property="og:description" content="前言为什么要优化？1、系统的吞吐量瓶颈往往出现在数据库的访问速度上2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢3、数据是存放在磁盘上的，读写速度无法和内存相比 如何优化1、设计数据库时：数据库表、字段的设计，存储引擎2、利用好MySQL自身提供的功能，如索引等3、横向扩展：MySQL集群、负载均衡、读写分离4、SQL语句的优化（文章主要讲解） 一、存储引擎的选择1、早期">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/mysql优化/first.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/03/27/mysql优化/1.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/03/27/mysql优化/2.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/03/27/mysql优化/3.PNG">
-<meta property="og:updated_time" content="2019-09-23T06:59:15.982Z">
+<meta property="og:updated_time" content="2019-11-25T03:44:30.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql优化">
-<meta name="twitter:description" content="前言为什么要优化？1、系统的吞吐量瓶颈往往出现在数据库的访问速度上2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢3、数据是存放在磁盘上的，读写速度无法和内存相比 如何优化1、设计数据库时：数据库表、字段的设计，存储引擎2、利用好MySQL自身提供的功能，如索引等3、横向扩展：MySQL集群、负载均衡、读写分离4、SQL语句的优化（文章主要讲解） 一、存储引擎的选择1、早期问">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/27/mysql优化/1.PNG">
+<meta name="twitter:description" content="前言为什么要优化？1、系统的吞吐量瓶颈往往出现在数据库的访问速度上2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢3、数据是存放在磁盘上的，读写速度无法和内存相比 如何优化1、设计数据库时：数据库表、字段的设计，存储引擎2、利用好MySQL自身提供的功能，如索引等3、横向扩展：MySQL集群、负载均衡、读写分离4、SQL语句的优化（文章主要讲解） 一、存储引擎的选择1、早期">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/27/mysql优化/first.jpg">
 
 
 
@@ -354,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-23T14:59:15+08:00">
-                2019-09-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-25T11:44:30+08:00">
+                2019-11-25
               </time>
             
           </span>
@@ -451,7 +452,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么要优化？"><a href="#为什么要优化？" class="headerlink" title="为什么要优化？"></a>为什么要优化？</h3><p>1、系统的吞吐量瓶颈往往出现在数据库的访问速度上<br>2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢<br>3、数据是存放在磁盘上的，读写速度无法和内存相比</p>
+        <p><img src="/2019/03/27/mysql优化/first.jpg" alt></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="为什么要优化？"><a href="#为什么要优化？" class="headerlink" title="为什么要优化？"></a>为什么要优化？</h3><p>1、系统的吞吐量瓶颈往往出现在数据库的访问速度上<br>2、随着应用程序的运行，数据库的中的数据会越来越多，处理时间会相应变慢<br>3、数据是存放在磁盘上的，读写速度无法和内存相比</p>
 <h3 id="如何优化"><a href="#如何优化" class="headerlink" title="如何优化"></a>如何优化</h3><p>1、设计数据库时：数据库表、字段的设计，存储引擎<br>2、利用好MySQL自身提供的功能，如索引等<br>3、横向扩展：MySQL集群、负载均衡、读写分离<br>4、SQL语句的优化（文章主要讲解）</p>
 <h2 id="一、存储引擎的选择"><a href="#一、存储引擎的选择" class="headerlink" title="一、存储引擎的选择"></a>一、存储引擎的选择</h2><h3 id="1、早期问题：如何选择MyISAM和Innodb？"><a href="#1、早期问题：如何选择MyISAM和Innodb？" class="headerlink" title="1、早期问题：如何选择MyISAM和Innodb？"></a>1、早期问题：如何选择MyISAM和Innodb？</h3><p>现在不存在这个问题了，Innodb不断完善，从各个方面赶超MyISAM，也是MySQL默认使用的。<br>存储引擎Storage engine：MySQL中的数据、索引以及其他对象是如何存储的，是一套文件系统的实现</p>
 <h3 id="2、存储差异"><a href="#2、存储差异" class="headerlink" title="2、存储差异"></a>2、存储差异</h3><p><img src="/2019/03/27/mysql优化/1.PNG" alt></p>
@@ -543,8 +545,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/01/HashMap的底层实现和面试问题/" rel="prev" title="HashMap的底层实现和面试问题">
-                HashMap的底层实现和面试问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/01/Elasticsearch介绍以及安装/" rel="prev" title="Elasticsearch介绍和安装">
+                Elasticsearch介绍和安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -649,7 +651,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -88,23 +88,24 @@
 
 
 
-<meta name="description" content="HashMap的底层实现和面试问题HashMap简介HashMap数据结构是哈希表结构（数组+链表） HashMap是一个散列表，它存储的内容是键值对（key-value）映射 HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。 HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为nul">
+<meta name="description" content="HashMap的底层实现和面试问题HashMap简介HashMap数据结构是哈希表结构（数组+链表） HashMap是一个散列表，它存储的内容是键值对（key-value）映射 HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。 HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为nu">
 <meta name="keywords" content="HashMap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap的底层实现和面试问题">
 <meta property="og:url" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/index.html">
 <meta property="og:site_name" content="郑汉钦同学的博客园">
-<meta property="og:description" content="HashMap的底层实现和面试问题HashMap简介HashMap数据结构是哈希表结构（数组+链表） HashMap是一个散列表，它存储的内容是键值对（key-value）映射 HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。 HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为nul">
+<meta property="og:description" content="HashMap的底层实现和面试问题HashMap简介HashMap数据结构是哈希表结构（数组+链表） HashMap是一个散列表，它存储的内容是键值对（key-value）映射 HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。 HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为nu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题/3.png">
-<meta property="og:updated_time" content="2019-10-12T08:09:46.865Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/first.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/3.png">
+<meta property="og:updated_time" content="2019-11-25T03:29:32.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap的底层实现和面试问题">
-<meta name="twitter:description" content="HashMap的底层实现和面试问题HashMap简介HashMap数据结构是哈希表结构（数组+链表） HashMap是一个散列表，它存储的内容是键值对（key-value）映射 HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。 HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为nul">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题/1.png">
+<meta name="twitter:description" content="HashMap的底层实现和面试问题HashMap简介HashMap数据结构是哈希表结构（数组+链表） HashMap是一个散列表，它存储的内容是键值对（key-value）映射 HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。 HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为nu">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/01/HashMap的底层实现和面试问题/first.jpg">
 
 
 
@@ -355,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-12T16:09:46+08:00">
-                2019-10-12
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-25T11:29:32+08:00">
+                2019-11-25
               </time>
             
           </span>
@@ -452,7 +453,8 @@
       
 
       
-        <h3 id="HashMap的底层实现和面试问题"><a href="#HashMap的底层实现和面试问题" class="headerlink" title="HashMap的底层实现和面试问题"></a>HashMap的底层实现和面试问题</h3><h4 id="HashMap简介"><a href="#HashMap简介" class="headerlink" title="HashMap简介"></a>HashMap简介</h4><p>HashMap数据结构是哈希表结构（数组+链表）</p>
+        <p><img src="/2019/06/01/HashMap的底层实现和面试问题/first.jpg" alt></p>
+<h3 id="HashMap的底层实现和面试问题"><a href="#HashMap的底层实现和面试问题" class="headerlink" title="HashMap的底层实现和面试问题"></a>HashMap的底层实现和面试问题</h3><h4 id="HashMap简介"><a href="#HashMap简介" class="headerlink" title="HashMap简介"></a>HashMap简介</h4><p>HashMap数据结构是哈希表结构（数组+链表）</p>
 <p>HashMap是一个散列表，它存储的内容是键值对（key-value）映射</p>
 <p>HashMap继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。</p>
 <p>HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。此外，HashMap中的映射不是有序的</p>
@@ -474,7 +476,7 @@
 <li>TreeMap：在需要按自然顺序或自定义顺序遍历键的情况下</li>
 <li>LinkedHashMap：在需要输出的顺序和输入的顺序相同的情况下。</li>
 </ul>
-<h4 id="Map简介"><a href="#Map简介" class="headerlink" title="Map简介"></a>Map简介</h4><p><img src="/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题\1.png" alt></p>
+<h4 id="Map简介"><a href="#Map简介" class="headerlink" title="Map简介"></a>Map简介</h4><p><img src="/2019/06/01/HashMap的底层实现和面试问题/1.png" alt></p>
 <p>Map中键必须是唯一的，值可以重复</p>
 <h4 id="面试题-1"><a href="#面试题-1" class="headerlink" title="面试题"></a>面试题</h4><ol start="2">
 <li>如何遍历map</li>
@@ -519,15 +521,15 @@
 <p>源码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> K key;</span><br><span class="line">        V value;</span><br><span class="line">        Entry&lt;K,V&gt; next;</span><br><span class="line">        <span class="keyword">int</span> hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结构如图所示</p>
-<p><img src="/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题\2.png" alt></p>
+<p><img src="/2019/06/01/HashMap的底层实现和面试问题/2.png" alt></p>
 </li>
 </ol>
 <h5 id="hash算法"><a href="#hash算法" class="headerlink" title="hash算法"></a>hash算法</h5><p>hash算法是计算key值对应哈希桶的位置即索引值。我们都知道数组在获取元素会比链表快，所以我们应该尽量让每个哈希桶只有一个元素，这样在查询时就只需要通过索引值找到对应的哈希桶内的值，而不需要再通过桶内的链表一个一个去查。所以hash算法的作用是为了让元素分散均匀，从而提高查询效率。源码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是根据key值获取value值的方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt; e;</span><br><span class="line">    <span class="comment">//先调用hash(key)</span></span><br><span class="line">    <span class="keyword">return</span> (e = getNode(hash(key), key)) == <span class="keyword">null</span> ? <span class="keyword">null</span> : e.value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Hash算法如下</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="comment">//第一步：先获取key中的hashCode值</span></span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">    <span class="comment">//第二步 再与hashcode向左移16位的值进行抑或 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">getNode</span><span class="params">(<span class="keyword">int</span> hash, Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="keyword">int</span> n; K k;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        <span class="comment">//第三步 n是指数组长度，hash与(n-1)进行&amp;与运算</span></span><br><span class="line">        (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">//省略</span></span><br><span class="line">        ...</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首先第一步获取hashcode没什么问题，到第二步为什么会跟hashcode左移16位的值进行抑或呢? 其实是将高位与低位进行与运算，减少碰撞机率。第三步取余运算，但在计算机运算中&amp;肯定比%快，又因为h % n = h &amp;（n - 1），所以最终将第二步得到的hash跟n-1进行与运算。n是table中的长度。</p>
-<p><img src="/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题\4.jpg" alt></p>
+<p><img src="/2019/06/01/HashMap的底层实现和面试问题/4.jpg" alt></p>
 <h5 id="HashMap的put增加方法流程"><a href="#HashMap的put增加方法流程" class="headerlink" title="HashMap的put增加方法流程"></a>HashMap的put增加方法流程</h5><p>put方法是重点也是最复杂的操作。需要掌握在什么情况下要扩容（后面会讲一下是如何扩容的），满足什么条件下链表需要转成红黑树。下面是put方法中流程图</p>
-<p><img src="/2019/06/01/HashMap的底层实现和面试问题/HashMap的底层实现和面试问题\3.png" alt></p>
+<p><img src="/2019/06/01/HashMap的底层实现和面试问题/3.png" alt></p>
 <h5 id="HashMap的get方法，查询元素"><a href="#HashMap的get方法，查询元素" class="headerlink" title="HashMap的get方法，查询元素"></a>HashMap的get方法，查询元素</h5><p>查询get方法相对简单，只要明白hash算法后得到哈希桶的索引值，再对桶内的链表进行比较hash，key是否相等。</p>
 <h5 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h5><p>扩容是Hashmap重点中的重点。也是最耗性能的操作。扩容的步骤是先对size扩大两倍，再对原先的节点重新经过hash算法得到新的索引值即复制到新的哈希桶里。最后得到新的table。其中jdk8对扩容进行了优化，提高了扩容的效率。但在平常运用中尽量要避免让hashmap进行扩容，若已知hashmap中的元素数量，则一开始初始化hashmap时指定容量，这样就减少了hashmap扩容次数。</p>
 <h5 id="面试题-2"><a href="#面试题-2" class="headerlink" title="面试题"></a>面试题</h5><ol>
@@ -611,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/27/mysql优化/" rel="next" title="mysql优化">
-                <i class="fa fa-chevron-left"></i> mysql优化
+              <a href="/2019/06/01/Elasticsearch介绍以及安装/" rel="next" title="Elasticsearch介绍和安装">
+                <i class="fa fa-chevron-left"></i> Elasticsearch介绍和安装
               </a>
             
           </div>
@@ -621,8 +623,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/01/Elasticsearch介绍以及安装/" rel="prev" title="Elasticsearch介绍和安装">
-                Elasticsearch介绍和安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/14/IntelliJ IDEA常用快捷键总结/" rel="prev" title="IntelliJIDEA常用快捷键总结">
+                IntelliJIDEA常用快捷键总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -727,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
