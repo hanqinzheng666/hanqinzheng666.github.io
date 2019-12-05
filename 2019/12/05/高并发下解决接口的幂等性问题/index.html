@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Spring Boot,">
+  <meta name="keywords" content="幂等,">
 
 
 
@@ -88,18 +88,20 @@
 
 
 
-<meta name="description" content="Spring Boot注解大全一、注解列表@SpringBootApplication包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。 @ComponentScan 组件扫描，可自动发现和装配一些Bean。 @Co">
-<meta name="keywords" content="Spring Boot">
+<meta name="description" content="背景我们实际系统中有很多操作，是不管做多少次，都应该产生一样的效果或返回一样的结果。 例如  前端重复提交选中的数据，应该后台只产生对应这个数据的一个反应结果； 我们发起一笔付款请求，应该只扣用户账户一次钱，当遇到网络重发或系统bug重发，也应该只扣一次钱； 发送消息，也应该只发一次，同样的短信发给用户，用户会哭的； 创建业务订单，一次业务请求只能创建一个，创建多个就会出大问题等等很多重要的情况">
+<meta name="keywords" content="幂等">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot注解大全">
-<meta property="og:url" content="http://yoursite.com/2019/09/19/Spring Boot注解大全/index.html">
+<meta property="og:title" content="高并发下解决接口的幂等性问题">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/高并发下解决接口的幂等性问题/index.html">
 <meta property="og:site_name" content="孑然一身&#39;s Blog">
-<meta property="og:description" content="Spring Boot注解大全一、注解列表@SpringBootApplication包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。 @ComponentScan 组件扫描，可自动发现和装配一些Bean。 @Co">
+<meta property="og:description" content="背景我们实际系统中有很多操作，是不管做多少次，都应该产生一样的效果或返回一样的结果。 例如  前端重复提交选中的数据，应该后台只产生对应这个数据的一个反应结果； 我们发起一笔付款请求，应该只扣用户账户一次钱，当遇到网络重发或系统bug重发，也应该只扣一次钱； 发送消息，也应该只发一次，同样的短信发给用户，用户会哭的； 创建业务订单，一次业务请求只能创建一个，创建多个就会出大问题等等很多重要的情况">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T09:34:26.586Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/05/高并发下解决接口的幂等性问题/first.jpg">
+<meta property="og:updated_time" content="2019-12-05T09:42:20.602Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot注解大全">
-<meta name="twitter:description" content="Spring Boot注解大全一、注解列表@SpringBootApplication包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。 @ComponentScan 组件扫描，可自动发现和装配一些Bean。 @Co">
+<meta name="twitter:title" content="高并发下解决接口的幂等性问题">
+<meta name="twitter:description" content="背景我们实际系统中有很多操作，是不管做多少次，都应该产生一样的效果或返回一样的结果。 例如  前端重复提交选中的数据，应该后台只产生对应这个数据的一个反应结果； 我们发起一笔付款请求，应该只扣用户账户一次钱，当遇到网络重发或系统bug重发，也应该只扣一次钱； 发送消息，也应该只发一次，同样的短信发给用户，用户会哭的； 创建业务订单，一次业务请求只能创建一个，创建多个就会出大问题等等很多重要的情况">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/05/高并发下解决接口的幂等性问题/first.jpg">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/19/Spring Boot注解大全/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/05/高并发下解决接口的幂等性问题/">
 
 
 
 
 
-  <title>Spring Boot注解大全 | 孑然一身's Blog</title>
+  <title>高并发下解决接口的幂等性问题 | 孑然一身's Blog</title>
   
 
 
@@ -314,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/Spring Boot注解大全/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/高并发下解决接口的幂等性问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="孑然一身's Blog">
@@ -331,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Boot注解大全</h1>
+          <h1 class="post-title" itemprop="name headline">高并发下解决接口的幂等性问题</h1>
         
 
         <div class="post-meta">
@@ -344,8 +346,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T15:53:43+08:00">
-                2019-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T15:42:15+08:00">
+                2019-12-05
               </time>
             
 
@@ -360,8 +362,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-24T17:34:26+08:00">
-                2019-09-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-05T17:42:20+08:00">
+                2019-12-05
               </time>
             
           </span>
@@ -379,8 +381,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring-Boot/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring Boot</span>
+                  <a href="/categories/幂等/" itemprop="url" rel="index">
+                    <span itemprop="name">幂等</span>
                   </a>
                 </span>
 
@@ -397,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/19/Spring Boot注解大全/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/19/Spring Boot注解大全/" itemprop="commentCount"></span>
+                <a href="/2019/12/05/高并发下解决接口的幂等性问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/05/高并发下解决接口的幂等性问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -420,7 +422,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  781 字
+                  1.4k 字
                 </span>
               
 
@@ -436,7 +438,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -457,33 +459,33 @@
       
 
       
-        <h3 id="Spring-Boot注解大全"><a href="#Spring-Boot注解大全" class="headerlink" title="Spring Boot注解大全"></a>Spring Boot注解大全</h3><h4 id="一、注解列表"><a href="#一、注解列表" class="headerlink" title="一、注解列表"></a>一、注解列表</h4><p><strong>@SpringBootApplication</strong>包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。</p>
-<p><strong>@ComponentScan</strong> 组件扫描，可自动发现和装配一些Bean。</p>
-<p><strong>@Configuration</strong> 等同于spring的XML配置文件；使用Java代码可以检查类型安全。</p>
-<p><strong>@EnableAutoConfiguration</strong> 自动配置。</p>
-<p><strong>@Component</strong>可配合CommandLineRunner使用，在程序启动后执行一些基础任务。</p>
-<p><strong>@RestController</strong>注解是@Controller和@ResponseBody的合集,表示这是个控制器bean,并且是将函数的返回值直 接填入HTTP响应体中,是REST风格的控制器。</p>
-<p><strong>@Autowired</strong>自动导入。</p>
-<p><strong>@PathVariable</strong>获取参数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(”/testPathVariable/&#123;id&#125;<span class="string">")</span></span><br><span class="line"><span class="string">    public String testPathVariable(@PathVariable(“id”) Integer id)</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">        System.out.println(“testPathVariable:”+id);</span></span><br><span class="line"><span class="string">        return SUCCESS;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="二、常用注解详情"><a href="#二、常用注解详情" class="headerlink" title="二、常用注解详情"></a>二、常用注解详情</h4><p><strong>@ResponseBody</strong>：表示该方法的返回结果直接写入HTTP response body中，一般在异步获取数据时使用，用于构建RESTful的api。在<u>使用<strong>@RequestMapping</strong>后，返回值通常解析为跳转路径，</u>加上@Responsebody后返回结果不会被解析为跳转路径，而是直接写入HTTP response body中。比如异步获取json数据，<u>加上<strong>@Responsebody</strong>后，会直接返回json数据</u>。该注解一般会配合@RequestMapping一起使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="meta">@RequestMapping</span>(<span class="string">"/test”)</span></span><br><span class="line"><span class="string">2 @ResponseBody</span></span><br><span class="line"><span class="string">3 public String test()&#123;</span></span><br><span class="line"><span class="string">4    return”ok”;</span></span><br><span class="line"><span class="string">5 &#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong>@Controller</strong>：用于定义控制器类，在spring项目中由控制器负责将用户发来的URL请求转发到对应的服务接口（service层），一般这个注解在类中，通常方法需要配合注解@RequestMapping。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="meta">@Controller</span></span><br><span class="line"> <span class="number">2</span> <span class="meta">@RequestMapping</span>(“/demoInfo”)</span><br><span class="line"> <span class="number">3</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> </span>&#123;</span><br><span class="line"> <span class="number">4</span> <span class="meta">@Autowired</span></span><br><span class="line"> <span class="number">5</span> <span class="keyword">private</span> DemoInfoService demoInfoService;</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="meta">@RequestMapping</span>(”/hello“)</span><br><span class="line"> <span class="number">8</span> <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">(Map&lt;String,Object&gt; map)</span></span>&#123;</span><br><span class="line"> <span class="number">9</span>    System.out.println(“DemoController.hello()”);</span><br><span class="line"><span class="number">10</span>    map.put(”hello“,”from TemplateController.helloHtml“);</span><br><span class="line"><span class="number">11</span>    <span class="comment">//会使用hello.html或者hello.ftl模板进行渲染显示.</span></span><br><span class="line"><span class="number">12</span>    <span class="keyword">return</span> <span class="string">"/hello“;</span></span><br><span class="line"><span class="string">13 &#125;</span></span><br><span class="line"><span class="string">14 &#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong>@RestController</strong>：用于标注控制层组件(如struts中的action)，@ResponseBody和@Controller的合集。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span> <span class="keyword">package</span> com.kfit.demo.web;</span><br><span class="line"> <span class="number">2</span> </span><br><span class="line"> <span class="number">3</span> <span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"> <span class="number">4</span> <span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"> <span class="number">5</span> </span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span> <span class="meta">@RestController</span></span><br><span class="line"> <span class="number">8</span> <span class="meta">@RequestMapping</span>(“/demoInfo2”)</span><br><span class="line"> <span class="number">9</span> publicclass DemoController2 &#123;</span><br><span class="line"><span class="number">10</span> </span><br><span class="line"><span class="number">11</span> <span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line"><span class="number">12</span> <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">13</span>    <span class="keyword">return</span> <span class="string">"ok"</span>;</span><br><span class="line"><span class="number">14</span> &#125;</span><br><span class="line"><span class="number">15</span> &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>@Import</strong>：用来导入其他配置类。</p>
-<p><strong>@ImportResource</strong>：用来加载xml配置文件。</p>
-<p><strong>@Autowired</strong>：自动导入依赖的bean</p>
-<p><strong>@Service</strong>：一般用于修饰service层的组件</p>
-<p><strong>@Repository</strong>：使用@Repository注解可以确保DAO或者repositories提供异常转译，这个注解修饰的DAO或者repositories类会被ComponetScan发现并配置，同时也不需要为它们提供XML配置项。</p>
-<p><strong>@Bean</strong>：用@Bean标注方法等价于XML中配置的bean。</p>
-<p><strong>@Value</strong>：注入Spring boot application.properties配置的属性的值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 @Value(value = “#&#123;message&#125;”)</span><br><span class="line">  <span class="number">2</span> <span class="keyword">private</span> String message;</span><br></pre></td></tr></table></figure>
-<p><strong>@Component</strong>：泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</p>
-<p><strong>@Bean</strong>:相当于XML中的,放在方法的上面，而不是类，意思是产生一个bean,并交给spring管理。</p>
-<p><strong>@Qualifier</strong>：当有多个同一类型的Bean时，可以用@Qualifier(“name”)来指定。与@Autowired配合使用。@Qualifier限定描述符除了能根据名字进行注入，但能进行更细粒度的控制如何选择候选者</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="meta">@Autowired</span></span><br><span class="line"><span class="number">2</span> <span class="meta">@Qualifier</span>(value = “demoInfoService”)</span><br><span class="line"><span class="number">3</span> <span class="keyword">private</span> DemoInfoService demoInfoService;</span><br></pre></td></tr></table></figure>
+        <p><img src="/2019/12/05/高并发下解决接口的幂等性问题/first.jpg" alt></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>我们实际系统中有很多操作，是不管做多少次，都应该产生一样的效果或返回一样的结果。 例如</p>
+<ol>
+<li>前端重复提交选中的数据，应该后台只产生对应这个数据的一个反应结果；</li>
+<li>我们发起一笔付款请求，应该只扣用户账户一次钱，当遇到网络重发或系统bug重发，也应该只扣一次钱；</li>
+<li>发送消息，也应该只发一次，同样的短信发给用户，用户会哭的；</li>
+<li>创建业务订单，一次业务请求只能创建一个，创建多个就会出大问题等等很多重要的情况都需要幂等的特性来支持。</li>
+</ol>
+<h3 id="以SQL为例什么情况需要幂等性"><a href="#以SQL为例什么情况需要幂等性" class="headerlink" title="以SQL为例什么情况需要幂等性"></a>以SQL为例什么情况需要幂等性</h3><ol>
+<li>SELECT col1 FROM tab1 WHER col2=2，无论执行多少次都不会改变状态，是天然的幂等。</li>
+<li>UPDATE tab1 SET col1=1 WHERE col2=2，无论执行成功多少次状态都是一致的，因此也是幂等操作。</li>
+<li>UPDATE tab1 SET col1=col1+1 WHERE col2=2，每次执行的结果都会发生变化，这种不是幂等的。</li>
+<li>insert into user(userid,name) values(1,’a’) 如userid为唯一主键，即重复操作上面的业务，只会插入一条用户数据，具备幂等性。如userid不是主键，可以重复，那上面业务多次操作，数据都会新增多条，不具备幂等性。</li>
+<li>delete from user where userid=1，多次操作，结果一样，具备幂等性</li>
+</ol>
+<h3 id="如何保证幂等"><a href="#如何保证幂等" class="headerlink" title="如何保证幂等"></a>如何保证幂等</h3><h4 id="token机制"><a href="#token机制" class="headerlink" title="token机制"></a>token机制</h4><p>1、服务端提供了发送token的接口。我们在分析业务的时候，哪些业务是存在幂等问题的，就必须在执行业务前，先去获取token，服务器会把token保存到redis中。</p>
+<p>2、然后调用业务接口请求时，把token携带过去，一般放在请求头部。</p>
+<p>3、服务器判断token是否存在redis中，存在表示第一次请求，然后删除token,继续执行业务。</p>
+<p>4、如果判断token不存在redis中，就表示是重复操作，直接返回重复标记给client，这样就保证了业务代码，不被重复执行</p>
+<p><strong>token机制缺点</strong></p>
+<p>业务请求每次请求，都会有额外的请求（一次获取token请求、判断token是否存在的业务）。其实真实的生产环境中，1万请求也许只会存在10个左右的请求会发生重试，为了这10个请求，我们让9990个请求都发生了额外的请求</p>
+<h4 id="乐观锁机制"><a href="#乐观锁机制" class="headerlink" title="乐观锁机制"></a>乐观锁机制</h4><p>这种方法适合在更新的场景中，<code>update t_goods set count = count -1 , version = version + 1 where good_id=2 and version = 1</code><br>根据version版本，也就是在操作库存前先获取当前商品的version版本号，然后操作的时候带上此version号。我们梳理下，我们第一次操作库存时，得到version为1，调用库存服务version变成了2；但返回给订单服务出现了问题，订单服务又一次发起调用库存服务，当订单服务传如果version还是1，再执行上面的sql语句时，就不会执行；因为version已经变为2了，where条件就不成立。这样就保证了不管调用几次，只会真正的处理一次。乐观锁主要使用于处理读多写少的问题</p>
+<h4 id="唯一主键"><a href="#唯一主键" class="headerlink" title="唯一主键"></a>唯一主键</h4><p>这个机制是利用了数据库的主键唯一约束的特性，解决了在insert场景时幂等问题。但主键的要求不是自增的主键，这样就需要业务生成全局唯一的主键。</p>
+<p>如果是分库分表场景下，路由规则要保证相同请求下，落地在同一个数据库和同一表中，要不然数据库主键约束就不起效果了，因为是不同的数据库和表主键不相关。</p>
+<h4 id="防重表"><a href="#防重表" class="headerlink" title="防重表"></a>防重表</h4><p>使用订单号orderNo做为去重表的唯一索引，把唯一索引插入去重表，再进行业务操作，且他们在同一个事务中。这个保证了重复请求时，因为去重表有唯一约束，导致请求失败，避免了幂等问题。这里要注意的是，去重表和业务表应该在同一库中，这样就保证了在同一个事务，即使业务操作失败了，也会把去重表的数据回滚。这个很好的保证了数据一致性。</p>
+<h4 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h4><p>拿插入数据的例子，如果是分布是系统，构建全局唯一索引比较困难，例如唯一性的字段没法确定，这时候可以引入分布式锁，通过第三方的系统(redis或zookeeper)，在业务系统插入数据或者更新数据，获取分布式锁，然后做操作，之后释放锁，这样其实是把多线程并发的锁的思路，引入多多个系统，也就是分布式系统中得解决思路。要点：某个长流程处理过程要求不能并发执行，可以在流程执行之前根据某个标志(用户ID+后缀等)获取分布式锁，其他流程执行时获取锁就会失败，也就是同一时间该流程只能有一个能执行成功，执行完成后，释放分布式锁(分布式锁要第三方系统提供)；</p>
+<h4 id="select-insert"><a href="#select-insert" class="headerlink" title="select + insert"></a>select + insert</h4><p>并发不高的后台系统，或者一些任务JOB，为了支持幂等，支持重复执行，简单的处理方法是，先查询下一些关键数据，判断是否已经执行过，在进行业务处理，就可以了。注意：核心高并发流程不要用这种方法</p>
 
       
     </div>
@@ -542,7 +544,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+            <a href="/tags/幂等/" rel="tag"># 幂等</a>
           
         </div>
       
@@ -555,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/16/Typora编辑器介绍/" rel="next" title="Typora编辑器介绍">
-                <i class="fa fa-chevron-left"></i> Typora编辑器介绍
+              <a href="/2019/12/02/SpringBoot开发案例之参数传递/" rel="next" title="SpringBoot开发案例之参数传递">
+                <i class="fa fa-chevron-left"></i> SpringBoot开发案例之参数传递
               </a>
             
           </div>
@@ -564,10 +566,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/24/Spring Boot入门/" rel="prev" title="Spring Boot入门">
-                Spring Boot入门 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -777,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Boot注解大全"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot注解大全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、注解列表"><span class="nav-number">1.1.</span> <span class="nav-text">一、注解列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、常用注解详情"><span class="nav-number">1.2.</span> <span class="nav-text">二、常用注解详情</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以SQL为例什么情况需要幂等性"><span class="nav-number">2.</span> <span class="nav-text">以SQL为例什么情况需要幂等性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何保证幂等"><span class="nav-number">3.</span> <span class="nav-text">如何保证幂等</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#token机制"><span class="nav-number">3.1.</span> <span class="nav-text">token机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乐观锁机制"><span class="nav-number">3.2.</span> <span class="nav-text">乐观锁机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#唯一主键"><span class="nav-number">3.3.</span> <span class="nav-text">唯一主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#防重表"><span class="nav-number">3.4.</span> <span class="nav-text">防重表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式锁"><span class="nav-number">3.5.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-insert"><span class="nav-number">3.6.</span> <span class="nav-text">select + insert</span></a></li></ol></li></ol></div>
             
 
           </div>
