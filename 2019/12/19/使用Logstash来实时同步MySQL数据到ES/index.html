@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Elasticsearch,Logstash,">
 
 
 
@@ -88,17 +88,24 @@
 
 
 
-<meta name="description" content="不去尝试怎么知道自己不行,努力学习和总结才是最重要的">
-<meta name="keywords" content="学会记录，懂得记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孑然一身&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/categories/java基础/index.html">
+<meta name="description" content="前言由于MySQL数据库中存在数据的增删改操作，但ES中的数据却没改变，所以需要实时同步MySQL中的数据到ES中，保证ES数据的准确性和真实性  首先下载和你的ES对应的logstash版本，本篇中使用的是6.3.0  下载地址：https://www.elastic.co/cn/downloads/logstash  在进入logstash新增mysqletc文件夹，创建mysql.conf">
+<meta name="keywords" content="Elasticsearch,Logstash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Logstash来实时同步MySQL数据到ES">
+<meta property="og:url" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/index.html">
 <meta property="og:site_name" content="孑然一身&#39;s Blog">
-<meta property="og:description" content="不去尝试怎么知道自己不行,努力学习和总结才是最重要的">
+<meta property="og:description" content="前言由于MySQL数据库中存在数据的增删改操作，但ES中的数据却没改变，所以需要实时同步MySQL中的数据到ES中，保证ES数据的准确性和真实性  首先下载和你的ES对应的logstash版本，本篇中使用的是6.3.0  下载地址：https://www.elastic.co/cn/downloads/logstash  在进入logstash新增mysqletc文件夹，创建mysql.conf">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/first.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/3.png">
+<meta property="og:updated_time" content="2019-12-19T03:17:55.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孑然一身&#39;s Blog">
-<meta name="twitter:description" content="不去尝试怎么知道自己不行,努力学习和总结才是最重要的">
+<meta name="twitter:title" content="使用Logstash来实时同步MySQL数据到ES">
+<meta name="twitter:description" content="前言由于MySQL数据库中存在数据的增删改操作，但ES中的数据却没改变，所以需要实时同步MySQL中的数据到ES中，保证ES数据的准确性和真实性  首先下载和你的ES对应的logstash版本，本篇中使用的是6.3.0  下载地址：https://www.elastic.co/cn/downloads/logstash  在进入logstash新增mysqletc文件夹，创建mysql.conf">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/first.jpg">
 
 
 
@@ -128,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/java基础/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/">
 
 
 
 
 
-  <title>分类: java基础 | 孑然一身's Blog</title>
+  <title>使用Logstash来实时同步MySQL数据到ES | 孑然一身's Blog</title>
   
 
 
@@ -153,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -299,53 +306,306 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>java基础<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/使用Logstash来实时同步MySQL数据到ES/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="孑然一身's Blog">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/background.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="孑然一身's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/11/28/理解程序、线程和进程的关系/" itemprop="url">
-              
-                <span itemprop="name">理解程序、线程和进程的关系</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">使用Logstash来实时同步MySQL数据到ES</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-28T16:46:25+08:00" content="2019-11-28">
-          11-28
-        </time>
-      </div>
+        <div class="post-meta">
+	
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-19T10:27:00+08:00">
+                2019-12-19
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-19T11:17:55+08:00">
+                2019-12-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Elasticsearch/" itemprop="url" rel="index">
+                    <span itemprop="name">Elasticsearch</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Elasticsearch/Logstash/" itemprop="url" rel="index">
+                    <span itemprop="name">Logstash</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  482 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/first.jpg" alt></p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>由于MySQL数据库中存在数据的增删改操作，但ES中的数据却没改变，所以需要实时同步MySQL中的数据到ES中，保证ES数据的准确性和真实性</p>
+<ol>
+<li><strong>首先下载和你的ES对应的logstash版本，本篇中使用的是6.3.0</strong></li>
+</ol>
+<p>下载地址：<a href="https://www.elastic.co/cn/downloads/logstash" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/logstash</a></p>
+<ol start="2">
+<li><strong>在进入logstash新增mysqletc文件夹，创建mysql.conf和mysql-connector-java-5.1.46.jar包</strong></li>
+</ol>
+<p>mysql.conf文件内容如下图所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">  jdbc &#123;</span><br><span class="line">	  # mysql jdbc connection string to our backup databse</span><br><span class="line">	  jdbc_connection_string =&gt; &quot;jdbc:mysql://localhost:3306/houses?characterEncoding=UTF-8&amp;useSSL=false&quot;</span><br><span class="line">	  # the user we wish to excute our statement as</span><br><span class="line">	  jdbc_user =&gt; &quot;root&quot;</span><br><span class="line">	  jdbc_password =&gt; &quot;123456&quot;</span><br><span class="line">	  # the path to our downloaded jdbc driver  </span><br><span class="line">	  jdbc_driver_library =&gt; &quot;C:\software\logstash-6.3.0\logstash-6.3.0\mysqletc\mysql-connector-java-5.1.46.jar&quot;</span><br><span class="line">	  # the name of the driver class for mysql</span><br><span class="line">	  jdbc_driver_class =&gt; &quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">	  jdbc_paging_enabled =&gt; &quot;true&quot;</span><br><span class="line">	  jdbc_page_size =&gt; &quot;50&quot;</span><br><span class="line">	  #以下对应着要执行的sql的绝对路径。</span><br><span class="line">	  #statement_filepath =&gt; &quot;&quot;</span><br><span class="line">	  statement =&gt; &quot;select id,name,type,price,area,beds,baths,rating,remarks,city_id,community_id,address from house&quot;</span><br><span class="line">	  #定时字段 各字段含义（由左至右）分、时、天、月、年，全部为*默认含义为每分钟都更新（测试结果，不同的话请留言指出）</span><br><span class="line">      schedule =&gt; &quot;* * * * *&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">	  #ESIP地址与端口</span><br><span class="line">	  hosts =&gt; &quot;127.0.0.1:9200&quot; </span><br><span class="line">	  #ES索引名称（自己定义的）</span><br><span class="line">	  index =&gt; &quot;houses&quot;</span><br><span class="line">	  #自增ID编号</span><br><span class="line">	  document_id =&gt; &quot;%&#123;id&#125;&quot;</span><br><span class="line">	  document_type =&gt; &quot;house&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  stdout &#123;</span><br><span class="line">      #以JSON格式输出</span><br><span class="line">      codec =&gt; json_lines</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>查看mysql中的数据</strong></li>
+</ol>
+<p><img src="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/4.png" alt> </p>
+<ol start="4">
+<li><strong>运行ES，此次实验都在Windows执行，在cmd执行下列操作</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd C:\software\elasticsearch-6.3.0\elasticsearch-6.3.0\bin</span><br><span class="line">elasticsearch</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/1.png" alt></p>
+<ol start="5">
+<li><strong>运行Logstash,在cmd执行下列操作</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd C:\software\logstash-6.3.0\logstash-6.3.0\bin</span><br><span class="line">logstash -f ../mysqletc/mysql.conf</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/2.png" alt></p>
+<ol start="6">
+<li><strong>使用elasticsearch插件head查询是否同步成功</strong></li>
+</ol>
+<p><img src="/2019/12/19/使用Logstash来实时同步MySQL数据到ES/3.png" alt></p>
+<p>如上图所示，MySQL数据已经同步到ES中，且以每分钟间隔同步一次</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="孑然一身's Blog 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="孑然一身's Blog 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+<div>
+  
+    	﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          
+            <a href="/tags/Logstash/" rel="tag"># Logstash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/12/volatile关键字作用及使用场景详解/" rel="next" title="volatile关键字作用及使用场景详解">
+                <i class="fa fa-chevron-left"></i> volatile关键字作用及使用场景详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -353,6 +613,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -373,8 +640,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -509,6 +785,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -658,6 +950,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1033,42 +1329,6 @@
     });
     $(document).on('keyup', function (event) {
       var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-
-	
-<!-- ҳ����С���� -->
-<script type="text/javascript" src="/js/src/love.js"></script>
-
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":140,"height":260},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
-
- === 27 &&
         $('.search-popup').is(':visible');
       if (shouldDismissSearchPopup) {
         onPopupClose();
